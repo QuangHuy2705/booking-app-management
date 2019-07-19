@@ -1,0 +1,13 @@
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: auto;
+}
+
+tbody {
+    overflow-y: scroll;
+}
+
+th, td {
+    padding: 15px;
+  }
