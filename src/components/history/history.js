@@ -3,17 +3,13 @@ import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import {compose} from 'redux'
 import { Link } from 'react-router-dom'
-import * as styles from './homepage.module.scss'
+import * as styles from '../hompage/homepage.module.scss'
  
-class Homepage extends Component {
-
-    onUpdate(id) {
-        this.props.firestore.update({collection: 'orders', doc: id}, { delivered: true })
-    }
+class History extends Component {
 
     render() {
         const { orders } = this.props
-        const newOrders = orders ? orders.filter(order => !order.delivered) : []
+        const newOrders = orders ? orders.filter(order => order.delivered) : []
         return (
             <div className={styles[`hompage`]}>
                 <table>
@@ -45,14 +41,12 @@ class Homepage extends Component {
                                 <th className={styles[`order-item-idx`]}>
                                     <h5>{order.total} €</h5>
                                 </th>
-                                <th className={styles[`order-item-idx`]}>
-                                    <input onClick={() => this.onUpdate(order.id)} type='checkbox'></input>
-                                </th>
+                                <th className={styles[`order-item-idx`]}>{`${order.delivered}`}</th>
                             </tr>
                         ))}
                     </tbody>
                 </table>
-                <Link style={{display: 'inline-block', marginTop: '10px', borderBottom: '1px solid #000'}} to='/history'>History</Link>
+                <Link style={{display: 'inline-block', marginTop: '10px', borderBottom: '1px solid #000'}} to='/'>Back</Link>
             </div>
         ) 
     }
@@ -71,4 +65,4 @@ export default compose(
     firestoreConnect([
         {collection: 'orders'}
     ])
-)(Homepage)
+)(History)

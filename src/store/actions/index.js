@@ -1,3 +1,3 @@
-import * as orderActiocs from './order'
+import * as orderActions from './order'
 
-export default orderActiocs
+export default orderActions
