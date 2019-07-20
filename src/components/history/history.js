@@ -11,7 +11,7 @@ class History extends Component {
         const { orders } = this.props
         const newOrders = orders ? orders.filter(order => order.delivered) : []
         return (
-            <div className={styles[`hompage`]}>
+            <div className={styles[`homepage`]}>
                 <table>
                     <thead>
                         <tr>
